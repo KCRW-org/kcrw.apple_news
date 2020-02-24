@@ -2,8 +2,8 @@
 kcrw.apple_news
 ===============
 
-.. image:: https://readthedocs.org/projects/{{ cookiecutter.project_slug | replace("_", "-") }}/badge/?version=latest
-        :target: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/kcrwapple-news/badge/?version=latest
+        :target: https://kcrwapple-news.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/v/kcrw.apple_news.svg
@@ -11,10 +11,6 @@ kcrw.apple_news
 
 .. image:: https://img.shields.io/travis/alecpm/kcrw.apple_news.svg.svg
         :target: https://travis-ci.com/alecpm/kcrw.apple_news
-
-.. image:: https://readthedocs.org/projects/kcrw.apple-news/badge/?version=latest
-        :target: https://kcrw.apple-news.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
 
 .. image:: https://pyup.io/repos/github/KCRW-org/kcrw.apple-news/shield.svg
      :target: https://pyup.io/repos/github/KCRW-org/kcrw.apple-news/
