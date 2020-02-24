@@ -7,6 +7,8 @@ requirements:
   - requirements_dev.txt:
       update: all
 label_prs: pyup
+branch_prefix: pyup/
+pr_prefix: "PyUp "
 assignees:
  - alecpm
 close_prs: True
