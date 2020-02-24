@@ -57,12 +57,15 @@ def read_article_dir(path):
     filenames = glob.glob('%s/*' % path)
     for fname in filenames:
         base_name = os.path.basename(fname)
-        with open(fname, 'rb') as f:
+        if base_name.endswith('.json'):
+            with open(fname) as f:
+                data = json.load(f)
             if base_name == 'article.json':
-                article = json.load(f)
+                article = data
             elif base_name == 'metadata.json':
-                metadata = json.load(f)
-            else:
+                metadata = data
+        else:
+            with open(fname, 'rb') as f:
                 f_data = f.read()
                 assets[base_name] = six.ensure_binary(f_data, 'utf8')
 
