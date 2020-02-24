@@ -1,7 +1,6 @@
 update: all
 pin: True
-schedule: "every week"
-search: True
+search: False
 requirements:
   - requirements.txt:
       update: all
