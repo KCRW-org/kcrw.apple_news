@@ -9,10 +9,10 @@ kcrw.apple_news
 .. image:: https://img.shields.io/pypi/v/kcrw.apple_news.svg
         :target: https://pypi.python.org/pypi/kcrw.apple_news
 
-.. image:: https://img.shields.io/travis/alecpm/kcrw.apple_news.svg.svg
-        :target: https://travis-ci.com/alecpm/kcrw.apple_news
+.. image:: https://api.travis-ci.org/KCRW-org/kcrw.apple_news.svg?branch=master
+        :target: https://travis-ci.org/KCRW-org/kcrw.apple_news
 
-.. image:: https://pyup.io/repos/github/KCRW-org/kcrw.apple-news/shield.svg
+.. image:: https://pyup.io/repos/github/KCRW-org/kcrw.apple_news/shield.svg
      :target: https://pyup.io/repos/github/KCRW-org/kcrw.apple-news/
      :alt: Updates
 
@@ -20,7 +20,7 @@ kcrw.apple_news
 
 
 * Free software: MIT license
-* Documentation: https://kcrw.apple-news.readthedocs.io.
+* Documentation: https://kcrwapple-news.readthedocs.io.
 
 
 Features

@@ -3,17 +3,13 @@
 
 """The setup script."""
 
-import os
 from setuptools import setup, find_packages
 
 ###################################################################
 
-PACKAGES = []
-META_PATH = os.path.join("kcrw", "apple_news", "__init__.py")
-
-KEYWORDS = ['kcrw.apple_news', ]
+KEYWORDS = ['Apple News', 'REST API', 'KCRW']
 CLASSIFIERS = [
-    'Development Status :: 2 - Pre-Alpha',
+    'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Natural Language :: English',
@@ -28,10 +24,6 @@ CLASSIFIERS = [
 
 ###################################################################
 
-about = {}
-base = os.path.dirname(__file__)
-with open(os.path.join(base, "kcrw", "apple_news", "__init__.py")) as f:
-    exec(f.read(), about)
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -39,22 +31,22 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['requests[security]', 'six', 'click', 'click-log', ]
+requirements = ['requests[security]', 'six', 'Click>=7.0', 'click-log', ]
 
 setup_requirements = ['pytest-runner', ]
 
-test_requirements = ['pytest', ]
+test_requirements = ['pytest>=3', ]
 
 setup(
-    name=about["__title__"],
-    author=about["__author__"],
-    author_email=about["__email__"],
-    version=about["__version__"],
-    description=about["__summary__"],
+    name="kcrw.apple_news",
+    author="Alec Mitchell",
+    author_email="alecpm@gmail.com",
+    version="0.1.0",
+    description="Library for using the Apple News API",
     long_description=readme + '\n\n' + history,
     long_description_content_type="text/x-rst",
-    license=about["__license__"],
-    url=about["__url__"],
+    license="MIT license",
+    url="https://github.com/KCRW-org/kcrw.apple_news",
     keywords=KEYWORDS,
     classifiers=CLASSIFIERS,
     install_requires=requirements,
