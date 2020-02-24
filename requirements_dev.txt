@@ -10,5 +10,5 @@ twine==1.15.0
 pep517==0.7.0
 
 pytest==4.6.9
-pytest-runner==5.1
+pytest-runner==5.2
 mock==3.0.5
