@@ -41,7 +41,7 @@ setup(
     name="kcrw.apple_news",
     author="Alec Mitchell",
     author_email="alecpm@gmail.com",
-    version="0.2.1",
+    version="0.2.2",
     description="Library for using the Apple News API",
     long_description=readme + '\n\n' + history,
     long_description_content_type="text/x-rst",
