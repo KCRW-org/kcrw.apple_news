@@ -24,7 +24,15 @@ EXT_MAPPING = {
 
 class AppleNewsError(Exception):
     """Exception class for errors related to Apple News API requests"""
-    pass
+    code = None
+    data = None
+
+    def __init__(self, *args, **kw):
+        super(AppleNewsError, self).__init__(*args)
+        if 'code' in kw:
+            self.code = kw['code']
+        if 'data' in kw:
+            self.data = kw['data']
 
 
 class API(object):
@@ -100,9 +108,9 @@ class API(object):
                 code = resp.status_code
                 reason = resp.reason
             raise AppleNewsError(
-                'Error during Apple News request to {} ({}: {}):\n{}'.format(
-                    url, code, reason, data
-                )
+                'Error during Apple News request to {} ({}: {})'.format(
+                    url, code, reason
+                ), code=code, data=data
             )
         if method != 'DELETE':
             return resp.json()

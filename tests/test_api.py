@@ -233,10 +233,14 @@ def test_api_raises_applenewserror_after_request(api, patched_logger):
     with pytest.raises(AppleNewsError) as excinfo:
         api.read_channel()
 
+    exception = excinfo.value
     assert (
         'Error during Apple News request to https://news-api.apple.com/channels/FAKE_CHANNEL'
-        in str(excinfo.value)
+        in str(exception)
     )
+    assert 'mock.status_code' in str(exception.code)
+    assert 'mock.json' in str(exception.data)
+
     assert patched_logger.exception.call_count == 1
     assert patched_logger.exception.call_args[0][0] == 'Requests error'
 
