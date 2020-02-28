@@ -22,6 +22,18 @@ EXT_MAPPING = {
 }
 
 
+def ensure_binary(s, encoding='utf8'):
+    if isinstance(s, six.text_type):
+        s = s.encode(encoding)
+    return s
+
+
+def ensure_text(s, encoding='utf8'):
+    if isinstance(s, six.binary_type):
+        s = s.decode(encoding)
+    return s
+
+
 class AppleNewsError(Exception):
     """Exception class for errors related to Apple News API requests"""
     code = None
@@ -79,14 +91,14 @@ class API(object):
         if route:
             url = url + '/' + route
         canonical_request = (
-            six.ensure_binary(method, 'utf8') +
-            six.ensure_binary(url, 'utf8') +
-            six.ensure_binary(date, 'utf8')
+            ensure_binary(method, 'utf8') +
+            ensure_binary(url, 'utf8') +
+            ensure_binary(date, 'utf8')
         )
         if body:
             canonical_request += (
-                six.ensure_binary(content_type, 'utf8') +
-                six.ensure_binary(body, 'utf8')
+                ensure_binary(content_type, 'utf8') +
+                ensure_binary(body, 'utf8')
             )
 
         signature = self._create_signature(canonical_request)
@@ -166,7 +178,7 @@ class API(object):
             raise AppleNewsError('No article body found for article')
         if assets:
             files = list(sorted(assets.items(),
-                                key=lambda e: six.ensure_text(e[0], 'utf8')))
+                                key=lambda e: ensure_text(e[0], 'utf8')))
         else:
             files = []
         files.insert(0, ('article.json', json.dumps(article)))
@@ -206,7 +218,7 @@ class API(object):
             )
         if assets:
             files = list(sorted(assets.items(),
-                                key=lambda e: six.ensure_text(e[0], 'utf8')))
+                                key=lambda e: ensure_text(e[0], 'utf8')))
         else:
             files = []
         files.insert(0, ('metadata', json.dumps(metadata)))
@@ -271,8 +283,8 @@ class API(object):
         content_type = self._guess_content_type(filename)
         if content_type is None:
             return None
-        filename = six.ensure_binary(filename, 'utf8')
-        file_data = six.ensure_binary(file_data, 'utf8')
+        filename = ensure_binary(filename, 'utf8')
+        file_data = ensure_binary(file_data, 'utf8')
         content_type = content_type
         part = b"--%s\r\n" % boundary
         part += b"Content-Type: %s\r\n" % content_type

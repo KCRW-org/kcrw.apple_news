@@ -12,7 +12,7 @@ try:
 except ImportError:
     import mock
 
-from kcrw.apple_news.api import API, AppleNewsError
+from kcrw.apple_news.api import API, AppleNewsError, ensure_binary
 
 
 @pytest.fixture
@@ -67,10 +67,10 @@ def test_api_create_article(api):
     assert len(data_lines) == 21
     assert data_lines[1] == b'Content-Type: application/json'
     assert data_lines[2] == b'Content-Disposition: form-data; filename=metadata; size=18'
-    assert data_lines[4] == six.ensure_binary(json.dumps({"key1": "value1"}), 'utf8')
+    assert data_lines[4] == ensure_binary(json.dumps({"key1": "value1"}), 'utf8')
     assert data_lines[6] == b'Content-Type: application/json'
     assert data_lines[7] == b'Content-Disposition: form-data; filename=article.json; size=20'
-    assert data_lines[9] == six.ensure_binary(json.dumps({"title": "A Title"}), 'utf8')
+    assert data_lines[9] == ensure_binary(json.dumps({"title": "A Title"}), 'utf8')
     assert data_lines[11] == b'Content-Type: image/jpeg'
     assert data_lines[12] == b'Content-Disposition: form-data; filename=image1.jpg; size=15'
     assert data_lines[14] == b'FFFDASFAFADADFA'
@@ -130,7 +130,7 @@ def test_api_update_article(api):
     assert len(data_lines) == 6
     assert data_lines[1] == b'Content-Type: application/json'
     assert data_lines[2] == b'Content-Disposition: form-data; filename=metadata; size=51'
-    assert data_lines[4] == six.ensure_binary(
+    assert data_lines[4] == ensure_binary(
         json.dumps({'data': {'metadata': 'a', 'revision': "12233323"}}), 'utf8'
     )
 
@@ -155,12 +155,12 @@ def test_api_update_with_article(api):
     assert len(data_lines) == 16
     assert data_lines[1] == b'Content-Type: application/json'
     assert data_lines[2] == b'Content-Disposition: form-data; filename=metadata; size=51'
-    assert data_lines[4] == six.ensure_binary(
+    assert data_lines[4] == ensure_binary(
         json.dumps({'data': {'metadata': 'a', 'revision': "12233323"}}), 'utf8'
     )
     assert data_lines[6] == b'Content-Type: application/json'
     assert data_lines[7] == b'Content-Disposition: form-data; filename=article.json; size=20'
-    assert data_lines[9] == six.ensure_binary(json.dumps({"title": "A Title"}), 'utf8')
+    assert data_lines[9] == ensure_binary(json.dumps({"title": "A Title"}), 'utf8')
     assert data_lines[11] == b'Content-Type: image/jpeg'
     assert data_lines[12] == b'Content-Disposition: form-data; filename=image1.jpg; size=15'
     assert data_lines[14] == b'FFFDASFAFADADFA'

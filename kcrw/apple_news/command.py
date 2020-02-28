@@ -8,7 +8,7 @@ import glob
 import json
 import os
 import six
-from kcrw.apple_news.api import API, logger
+from kcrw.apple_news.api import API, logger, ensure_binary
 
 
 click_log.basic_config(logger)
@@ -67,7 +67,7 @@ def read_article_dir(path):
         else:
             with open(fname, 'rb') as f:
                 f_data = f.read()
-                assets[base_name] = six.ensure_binary(f_data, 'utf8')
+                assets[base_name] = ensure_binary(f_data, 'utf8')
 
     return metadata, article, assets
 
