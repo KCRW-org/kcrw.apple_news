@@ -6,7 +6,7 @@ __title__ = "kcrw.apple_news"
 __summary__ = "Library for using the Apple News API"
 __url__ = "https://github.com/KCRW-org/kcrw.apple_news"
 
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 __author__ = "Alec Mitchell"
 __email__ = "alecpm@gmail.com"
