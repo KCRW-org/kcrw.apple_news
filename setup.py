@@ -39,9 +39,10 @@ test_requirements = ['pytest>=3', ]
 
 setup(
     name="kcrw.apple_news",
+    namespace_packages=['kcrw'],
     author="Alec Mitchell",
     author_email="alecpm@gmail.com",
-    version="0.2.5-1",
+    version="0.2.6",
     description="Library for using the Apple News API",
     long_description=readme + '\n\n' + history,
     long_description_content_type="text/x-rst",
@@ -51,7 +52,8 @@ setup(
     classifiers=CLASSIFIERS,
     install_requires=requirements,
     include_package_data=True,
-    packages=find_packages(include=['kcrw.apple_news']),
+    package_dir={'': 'src'},
+    packages=find_packages('src'),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
