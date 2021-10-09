@@ -1,4 +1,4 @@
 requests[security]==2.23.0
 six==1.14.0
-click==7.1.1
+click==8.0.2
 click-log==0.3.2
